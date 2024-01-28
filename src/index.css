@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap');
+
+:root {
+	--color-fire: #ff7402;
+	--color-grass: #9bcc50;
+	--color-steel: #9eb7b8;
+	--color-water: #4592c4;
+	--color-psychic: #f366b9;
+	--color-ground: #ab9842;
+	--color-ice: #51c4e7;
+	--color-flying: #3dc7ef;
+	--color-ghost: #4d5b64;
+	--color-normal: #a4acaf;
+	--color-poison: #7e0058;
+	--color-rock: #a38c21;
+	--color-fighting: #d56723;
+	--color-dark: #707070;
+	--color-bug: #729f3f;
+	--color-dragon: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+	--color-electric: #bba909;
+	--color-fairy: #fdb9e9;
+	--color-shadow: #7b62a3;
+	--color-unknow: #757575;
+	--color-primary: #5363d8;
+	--color-primary-hover: #83c5be;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: system-ui, sans-serif;
+}
+/* Global */
+.container {
+	margin: 0 auto;
+}
+
+/* Header */
+header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 0;
+	position: sticky;
+	top: 0;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	z-index: 2;
+}
+
+.logo img {
+	width: 140px;
+}
+
+/*Start link*/
+.container-catalog-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 60vh;
+	margin: 0;
+}
+
+.catalog-link {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	text-decoration: none;
+	transition: background-color 0.3s ease;
+	animation: bounce 2s infinite;
+
+}
+
+.catalog-link img {
+	width: 30%;
+}
+
+.catalog-link span {
+	display: inline-block;
+	padding: 8px 15px;
+	background-color: var(--color-primary);
+	color: white;
+	border-radius: 5px;
+}
+
+.catalog-link span:hover {
+	background-color: var(--color-primary-hover);
+	color: #000;
+}
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+		transform: translateY(0);
+	}
+	40% {
+		transform: translateY(-20px);
+	}
+	60% {
+		transform: translateY(-10px);
+	}
+}
+
+/*Content*/
+.container-content {
+	display: flex;
+	max-width: 800px;
+	min-width: 500px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.left-section {
+	margin: 20px 0;
+}
+
+.right-section {
+	position: fixed;
+	top: 55%;
+	left: 65%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	max-width: inherit
+}
+
+/* Types of Pokemon */
+.water {
+	background-color: var(--color-water);
+}
+
+.grass {
+	background-color: var(--color-grass);
+}
+
+.poison {
+	background-color: var(--color-poison);
+}
+
+.fire {
+	background-color: var(--color-fire);
+}
+
+.bug {
+	background-color: var(--color-bug);
+}
+
+.dragon {
+	background: var(--color-dragon);
+}
+
+.flying {
+	background-color: var(--color-flying);
+}
+
+.ground {
+	background-color: var(--color-ground);
+}
+
+.steel {
+	background-color: var(--color-steel);
+}
+
+.psychic {
+	background-color: var(--color-psychic);
+}
+
+.ice {
+	background-color: var(--color-ice);
+}
+
+.ghost {
+	background-color: var(--color-ghost);
+}
+
+.normal {
+	background-color: var(--color-normal);
+}
+
+.rock {
+	background-color: var(--color-rock);
+}
+
+.electric {
+	background-color: var(--color-electric);
+}
+
+.fighting {
+	background-color: var(--color-fighting);
+}
+
+.fairy {
+	background-color: var(--color-fairy);
+}
+
+.dark {
+	background-color: var(--color-dark);
+}
+
+/* Card List Pokemon */
+.card-list-pokemon {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.card-pokemon {
+	cursor: pointer;
+	text-decoration: none;
+	max-width: 135px;
+	border: 1px solid #323232;
+}
+
+.card-img {
+	background-color: #f2f2f2;
+	border: 1px solid #323232;
+	margin: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 120px;
+}
+
+.card-img img {
+	width: 80%;
+	height: 80%;
+}
+
+.card-info {
+	padding: 0 10px 25px;
+}
+
+.card-info h3 {
+	display: flex;
+	justify-content: center;
+	color: #333;
+	font-size: 16px;
+}
+
+.pokemon-id {
+	display: block;
+	color: #888;
+	margin-bottom: 15px;
+}
+
+.card-types {
+	display: flex;
+	gap: 10px;
+	margin: 5px 0 10px;
+}
+
+.card-types span {
+	font-size: 12px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	color: #fff;
+}
+
+/*Pokemon details*/
+.main-pokemon {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #323232;
+	width: 230px;
+	align-items: center;
+	background-color: #fff;
+}
+
+.container-img-pokemon {
+	display: flex;
+	padding: 10px;
+	height: 180px;
+	width: 100%;
+	max-width: 230px;
+	box-sizing: border-box;
+}
+
+.container-img-pokemon img {
+	height: 100%;
+	width: 100%;
+	border: 1px solid #323232;
+	background-color: #f0f0f0;
+}
+
+.container-info-pokemon {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+
+}
+
+.container-info-pokemon h1 {
+	font-size: 22px;
+	font-weight: 700;
+	padding-right: 5px;
+}
+
+.number-pokemon {
+	font-weight: 700;
+	font-size: 22px;
+	padding-left: 5px;
+}
+
+/* Stats */
+.container-stats {
+	margin: 10px;
+	width: 210px;
+	box-sizing: border-box;
+}
+
+.stats {
+	width: 100%;
+}
+
+.stat-group {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 0;
+}
+
+.stat-group span {
+	flex: 3;
+	padding: 5px;
+	font-weight: 500;
+	font-size: 14px;
+	text-align: center;
+	border: 1px solid #323232;
+	box-sizing: border-box;
+}
+
+.stat-group .counter-stat {
+	flex: 1;
+}
+
+/* Loader */
+.container-loader{
+	display: flex;
+	justify-content: center;
+	margin: 200px 0;
+}
+
+/* Btn Load More */
+.container-load-more-button{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.load-more-button{
+	border: none;
+	padding: 15px 40px;
+	background-color: var(--color-primary);
+	color: #fff;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.load-more-button:hover{
+	background-color: var(--color-primary-hover);
+	color: #000;
+}
+
+/* Btn To Top */
+#scrollToTopBtn {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background-color: var(--color-primary);
+	color: #fff;
+	border: none;
+	border-radius: 50%;
+	padding: 20px;
+	cursor: pointer;
+}
+
+#scrollToTopBtn:hover {
+	background-color: var(--color-primary-hover);
+	color: #000;
+}
+
+#scrollToTopBtn::before {
+	content: '';
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	width: 15px;
+	height: 15px;
+	border-style: solid;
+	border-width: 2px 2px 0 0;
+	border-color: #fff;
+}
