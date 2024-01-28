@@ -118,12 +118,7 @@ header {
 }
 
 .right-section {
-	position: fixed;
-	top: 55%;
-	left: 65%;
-	transform: translate(-50%, -50%);
-	z-index: 2;
-	max-width: inherit
+	margin: 20px 0;
 }
 
 /* Types of Pokemon */
@@ -209,7 +204,7 @@ header {
 .card-pokemon {
 	cursor: pointer;
 	text-decoration: none;
-	max-width: 135px;
+	max-width: 140px;
 	border: 1px solid #323232;
 }
 
@@ -253,7 +248,7 @@ header {
 
 .card-types span {
 	font-size: 12px;
-	padding: 5px 10px;
+	padding: 5px 8px;
 	border-radius: 5px;
 	color: #fff;
 }
@@ -266,6 +261,9 @@ header {
 	width: 230px;
 	align-items: center;
 	background-color: #fff;
+	position: sticky;
+	top: 120px;
+	margin-left: 40px;
 }
 
 .container-img-pokemon {
