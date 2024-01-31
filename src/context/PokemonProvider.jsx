@@ -7,16 +7,14 @@ export const PokemonProvider = ({ children }) => {
 	const [globalPokemons, setGlobalPokemons] = useState([]);
 	const [offset, setOffset] = useState(0);
 
-	// Utilizar CustomHook - useForm
 	const { valueSearch, onInputChange, onResetForm } = useForm({
 		valueSearch: '',
 	});
 
-	// Estados para la aplicación simples
 	const [loading, setLoading] = useState(true);
-	// const [active, setActive] = useState(false);
+	const [active, setActive] = useState(false);
 
-	// lLamar 50 pokemones a la API
+	
 	const getAllPokemons = async (limit = 12) => {
 		const baseURL = 'https://pokeapi.co/api/v2/';
 
@@ -26,55 +24,46 @@ export const PokemonProvider = ({ children }) => {
 		const data = await res.json();
 
 		const promises = data.results.map(async pokemon => {
-			const res = await fetch(pokemon.url);
-			return await res.json();
+			const existingPokemon = allPokemons.find(p => p.id === pokemon.id);
+
+			if (existingPokemon) {
+				return existingPokemon;
+			} else {
+				const res = await fetch(pokemon.url);
+				return await res.json();
+			}
 		});
 		const results = await Promise.all(promises);
 
-		setAllPokemons([...allPokemons, ...results]);
+		if (offset === 0) {
+			setAllPokemons(results);
+		} else {
+			setAllPokemons([...allPokemons, ...results]);
+		}
+		
 		setLoading(false);
 	};
 
-	// Llamar todos los pokemones
-	const getGlobalPokemons = async () => {
-		const baseURL = 'https://pokeapi.co/api/v2/';
-
-		const res = await fetch(
-			`${baseURL}pokemon?limit=333&offset=0`
-		);
-		const data = await res.json();
-		const promises = data.results.map(async pokemon => {
-			const res = await fetch(pokemon.url);
-			return await res.json();
-		});
-		const results = await Promise.all(promises);
-
-		setGlobalPokemons(results);
-		setLoading(false);
-	};
-
-	// Llamar a un pokemon por ID
 	const getPokemonByID = async id => {
-		const baseURL = 'https://pokeapi.co/api/v2/';
+		const existingPokemon = allPokemons.find(p => p.id === id);
 
-		const res = await fetch(`${baseURL}pokemon/${id}`);
-		return await res.json();
-	};
+		if (existingPokemon) {
+    			return existingPokemon;
+ 		} else {
+			const baseURL = 'https://pokeapi.co/api/v2/';
+			const res = await fetch(`${baseURL}pokemon/${id}`);
+			return await res.json();
+		};
 
 	useEffect(() => {
-		getAllPokemons();
-	}, [offset]);
-
-	useEffect(() => {
-		getGlobalPokemons();
+		getAllPokemons(12);
 	}, []);
 
-	// BTN CARGAR MÁS
 	const onClickLoadMore = () => {
 		setOffset(offset + 12);
+		getAllPokemons();
 	};
 
-	// Filter Function + State
 	const [typeSelected, setTypeSelected] = useState({
 		grass: false,
 		normal: false,
