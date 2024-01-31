@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {firstUppercaseLetter} from "../helper/helper.js";
 
-export const CardPokemon = ({ pokemon }) => {
+export const PokemonCard = ({ pokemon }) => {
 	return (
 		<Link to={`/pokemons/${pokemon.id}`} className='card-pokemon'>
 			<div className='card-img'>

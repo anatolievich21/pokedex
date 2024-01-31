@@ -1,17 +1,26 @@
+import {useEffect} from "react";
+
 export const ScrollToTopButton = () => {
 
-    window.addEventListener('scroll', () => {
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-            scrollToTopBtn.style.display = 'block';
-        } else {
-            scrollToTopBtn.style.display = 'none';
+    useEffect(() => {
+        const scrollListener = () => {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        };
+
+        window.addEventListener('scroll', scrollListener);
+
+        return () => {
+            window.removeEventListener('scroll', scrollListener);
         }
-    });
+    }, []);
 
     return <>
-        <button id="scrollToTopBtn" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            {/*&#8679;*/}
-        </button>
+        <button id="scrollToTopBtn" style={{display: 'none'}} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
     </>
 }
