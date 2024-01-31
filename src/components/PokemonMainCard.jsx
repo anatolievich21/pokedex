@@ -1,26 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { Loader } from '../components';
-import { PokemonContext } from '../context/PokemonContext';
-import { firstUppercaseLetter } from '../helper/helper';
+import { Loader } from './index.js';
+import { PokemonContext } from '../context/PokemonContext.jsx';
+import { firstUppercaseLetter } from '../helper/helper.js';
 
-export const PokemonPage = () => {
-	const { getPokemonByID } = useContext(PokemonContext);
-
-	const [loading, setLoading] = useState(true);
-	const [pokemon, setPokemon] = useState({});
+export const PokemonMainCard = () => {
+	const { allPokemons, loading } = useContext(PokemonContext);
 
 	const { id } = useParams();
+	const pokemon = allPokemons.find(p => p.id === +id);
 
-	const fetchPokemon = async id => {
-		const data = await getPokemonByID(id);
-		setPokemon(data);
-		setLoading(false);
-	};
-
-	useEffect(() => {
-		fetchPokemon(id);
-	}, [id]);
+	if (!pokemon) {
+		return null
+	}
 
 	return (
 		<main className='container main-pokemon'>
@@ -28,7 +20,6 @@ export const PokemonPage = () => {
 				<Loader />
 			) : (
 				<>
-
 					<div className='container-img-pokemon'>
 						<img
 							src={pokemon.sprites.other.dream_world.front_default}
@@ -105,7 +96,6 @@ export const PokemonPage = () => {
 							</div>
 						</div>
 					</div>
-
 				</>
 			)}
 		</main>

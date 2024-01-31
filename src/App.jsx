@@ -1,4 +1,4 @@
-import { AppRouter } from './router/AppRouter.jsx';
+import { AppRouter } from './router/AppRouter';
 import { PokemonProvider } from './context/PokemonProvider';
 
 function App() {
