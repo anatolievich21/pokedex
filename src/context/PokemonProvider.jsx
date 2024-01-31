@@ -53,7 +53,8 @@ export const PokemonProvider = ({ children }) => {
 			const baseURL = 'https://pokeapi.co/api/v2/';
 			const res = await fetch(`${baseURL}pokemon/${id}`);
 			return await res.json();
-		};
+		}
+	};
 
 	useEffect(() => {
 		getAllPokemons(12);
@@ -120,7 +121,6 @@ export const PokemonProvider = ({ children }) => {
 				onInputChange,
 				onResetForm,
 				allPokemons,
-				globalPokemons,
 				getPokemonByID,
 				onClickLoadMore,
 				loading,
