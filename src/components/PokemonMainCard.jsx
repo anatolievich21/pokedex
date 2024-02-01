@@ -32,7 +32,6 @@ export const PokemonMainCard = () => {
 						<span className='number-pokemon'>#{pokemon.id.toString().padStart(3, '0')}</span>
 					</div>
 
-
 					<div className='container-stats'>
 
 						<div className='stats'>
@@ -46,42 +45,16 @@ export const PokemonMainCard = () => {
 										</span>
 
 							</div>
-							<div className='stat-group'>
-								<span>Attack</span>
-								<span className='counter-stat'>
-									{pokemon.stats[1].base_stat}
-								</span>
+
+							<div>
+								{pokemon.stats.map((stat, index) => (
+									<div key={index} className='stat-group'>
+										<span>{firstUppercaseLetter(stat.stat.name)}</span>
+										<span className='counter-stat'>{stat.base_stat}</span>
+									</div>
+								))}
 							</div>
-							<div className='stat-group'>
-								<span>Defense</span>
-								<span className='counter-stat'>
-									{pokemon.stats[2].base_stat}
-								</span>
-							</div>
-							<div className='stat-group'>
-								<span>HP</span>
-								<span className='counter-stat'>
-									{pokemon.stats[0].base_stat}
-								</span>
-							</div>
-							<div className='stat-group'>
-								<span>Special Attack</span>
-								<span className='counter-stat'>
-									{pokemon.stats[3].base_stat}
-								</span>
-							</div>
-							<div className='stat-group'>
-								<span>Special Defense</span>
-								<span className='counter-stat'>
-									{pokemon.stats[4].base_stat}
-								</span>
-							</div>
-							<div className='stat-group'>
-								<span>Speed</span>
-								<span className='counter-stat'>
-									{pokemon.stats[5].base_stat}
-								</span>
-							</div>
+
 							<div className='stat-group'>
 								<span>Weight</span>
 								<span className='counter-stat'>

@@ -36,7 +36,6 @@ export const PokemonProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-			console.log(offset + 12, "useEffect");
 			getAllPokemons();
 	}, [offset]);
 
